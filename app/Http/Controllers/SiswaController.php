@@ -19,7 +19,16 @@ class SiswaController extends Controller
 
     public function create(Request $request)
     {
-    	\App\Siswa::create($request->all());
+        $user = new \App\User;
+        $user->level='siswa';
+        $user->name=$request->nama_depan;
+        $user->email=$request->email;
+        $user->password=bcrypt('rahasia');
+        $user->remember_token=str_random(24);
+        $user->save();
+
+        $request->request->add(['user_id'=>$user->id]);
+        $siswa = \App\Siswa::create($request->all());
     	return redirect('/siswa')->with('sukses','Data Disimpan');
     }
 

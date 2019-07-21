@@ -78,6 +78,11 @@
 					  </div>
 
 					  <div class="form-group">
+					    <label for="exampleInputEmail1">Email</label>
+					    <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="nama_belakang" placeholder="Email" name="email">
+					  </div>
+
+					  <div class="form-group">
 					    <label for="exampleFormControlSelect1">Jenis Kelamin</label>
 					    <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
 					      <option value="L">Laki-laki</option>
