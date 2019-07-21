@@ -42,8 +42,5 @@ class SiswaController extends Controller
     	return redirect('/siswa')->with('sukses','Data Berhasil Dihapus');
     }
 
-    public function test()
-    {
-        return view('siswa.dashboard');
-    }
+    
 }
