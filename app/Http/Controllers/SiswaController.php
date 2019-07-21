@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
 
 class SiswaController extends Controller
@@ -32,6 +33,16 @@ class SiswaController extends Controller
     {
     	$siswa=\App\Siswa::find($id);
     	$siswa->update($request->all());
+        if($request->hasFile('avatar')){
+            $request->file('avatar')->move('images/',$request->file('avatar')->getClientOriginalName());
+            // $image=$request->file('avatar');
+            // $filename=$image->getClientOriginalName();
+            // $path = public_path('images/'.$filename);
+            // Image::make($image->getRealPath())->resize(100,100)->save($path);
+            // $siswa->avatar=$filename;
+            $siswa->avatar = $request->file('avatar')->getClientOriginalName();
+            $siswa->save();
+        }
 		return redirect('/siswa')->with('sukses','Data Berhasil Diupdate');
     }
 
@@ -42,5 +53,9 @@ class SiswaController extends Controller
     	return redirect('/siswa')->with('sukses','Data Berhasil Dihapus');
     }
 
-    
+    public function profile($id)
+    {
+        $siswa=\App\Siswa::find($id);
+        return view('siswa.profile',['siswa'=>$siswa]);
+    }
 }
