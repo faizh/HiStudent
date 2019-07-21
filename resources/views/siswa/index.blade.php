@@ -1,46 +1,56 @@
 @extends('layout.master')
 
 @section('content')
-		@if(session('sukses'))
+<div class="main">
+			<div class="main-content">
+				<div class="container-fluid">
+@if(session('sukses'))
 		<div class="alert alert-success" role="alert">
 		  {{session('sukses')}}
 		</div>
 		@endif
-		<div class="row">
 
-		<div class="col-6">
-			<h1>Data Siswa</h1>
-		</div>
-		<div class="col-6 pt-2">
-			<button type="button" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#exampleModal">
-			  Tambah Data
-			</button>
-		</div>
-		<table class="table table-hover">
-			<tr>
-				<th>Nama Depan</th>
-				<th>Nama Belakang</th>
-				<th>Jenis Kelamin</th>
-				<th>Agama</th>
-				<th>Alamat</th>
-				<th>Aksi</th>
-			</tr>
-
-			@foreach($data_siswa as $a)
-			<tr>
-				<td>{{$a->nama_depan}}</td>
-				<td>{{$a->nama_belakang}}</td>
-				<td>{{$a->jenis_kelamin}}</td>
-				<td>{{$a->agama}}</td>
-				<td>{{$a->alamat}}</td>
-				<td><a href="/siswa/{{$a->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
-					<a href="/siswa/{{$a->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Mau Dihapus?')">Delete</a></td>
-			</tr>
-			@endforeach
-		</table>
-
-		</div>
-	</div>
+<div class="col-md-12">
+							<!-- TABLE HOVER -->
+							<div class="panel">
+								<div class="panel-heading">
+									<h1 class="panel-title">Data Siswa</h1>
+								</div>
+								<div class="panel-body">
+									<button type="button" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#exampleModal">
+									  Tambah Data
+									</button>
+									<table class="table table-hover">
+										<thead>
+											<tr>
+												<th>Nama Depan</th>
+												<th>Nama Belakang</th>
+												<th>Jenis Kelamin</th>
+												<th>Agama</th>
+												<th>Alamat</th>
+												<th>Aksi</th>
+											</tr>
+										</thead>
+										<tbody>
+											@foreach($data_siswa as $a)
+											<tr>
+												<td>{{$a->nama_depan}}</td>
+												<td>{{$a->nama_belakang}}</td>
+												<td>{{$a->jenis_kelamin}}</td>
+												<td>{{$a->agama}}</td>
+												<td>{{$a->alamat}}</td>
+												<td><a href="/siswa/{{$a->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+													<a href="/siswa/{{$a->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Mau Dihapus?')">Delete</a></td>
+											</tr>
+										</tbody>
+									@endforeach
+									</table>
+									</div>
+								</div>
+								</div>
+							</div>
+							<!-- END TABLE HOVER -->
+						</div>
 
 
 <!-- Modal -->
@@ -99,5 +109,7 @@
 			      </div>
 			    </div>
 			  </div>
-			
-@endsection
+				</div>
+			</div>
+		</div>
+@stop

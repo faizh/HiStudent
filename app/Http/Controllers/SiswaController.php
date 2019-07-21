@@ -25,7 +25,7 @@ class SiswaController extends Controller
     public function edit($id)
     {
     	$siswa=\App\Siswa::find($id);
-    	return view('siswa/edit',['siswa'=>$siswa]);
+    	return view('siswa.edit',['siswa'=>$siswa]);
     }
 
     public function update(Request $request, $id)
@@ -40,5 +40,10 @@ class SiswaController extends Controller
     	$siswa=\App\Siswa::find($id);
     	$siswa->delete();
     	return redirect('/siswa')->with('sukses','Data Berhasil Dihapus');
+    }
+
+    public function test()
+    {
+        return view('siswa.dashboard');
     }
 }
