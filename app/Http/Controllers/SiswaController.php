@@ -19,6 +19,15 @@ class SiswaController extends Controller
 
     public function create(Request $request)
     {
+        $this->validate($request,[
+            'nama_depan' => 'required|min:5',
+            'nama_belakang' => 'required',
+            'email' => 'required|email|unique:users',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'avatar' => 'mimes:jpg,jpeg,png'
+        ]);
+
         $user = new \App\User;
         $user->level='siswa';
         $user->name=$request->nama_depan;
@@ -29,6 +38,18 @@ class SiswaController extends Controller
 
         $request->request->add(['user_id'=>$user->id]);
         $siswa = \App\Siswa::create($request->all());
+
+        if($request->hasFile('avatar')){
+            $request->file('avatar')->move('images/',$request->file('avatar')->getClientOriginalName());
+            // $image=$request->file('avatar');
+            // $filename=$image->getClientOriginalName();
+            // $path = public_path('images/'.$filename);
+            // Image::make($image->getRealPath())->resize(100,100)->save($path);
+            // $siswa->avatar=$filename;
+            $siswa->avatar = $request->file('avatar')->getClientOriginalName();
+            $siswa->save();
+        }
+
     	return redirect('/siswa')->with('sukses','Data Disimpan');
     }
 
@@ -40,6 +61,14 @@ class SiswaController extends Controller
 
     public function update(Request $request, $id)
     {
+        $this->validate($request,[
+            'nama_depan' => 'required|min:5',
+            'nama_belakang' => 'required',
+            'jenis_kelamin' => 'required',
+            'agama' => 'required',
+            'avatar' => 'mimes:jpg,jpeg,png'
+        ]);
+
     	$siswa=\App\Siswa::find($id);
     	$siswa->update($request->all());
         if($request->hasFile('avatar')){
