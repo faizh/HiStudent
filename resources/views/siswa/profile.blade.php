@@ -2,9 +2,19 @@
 
 @section('content')
 <div class="main">
+	
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
+					@if(session('sukses'))
+						<div class="alert alert-success" role="alert">
+						  {{session('sukses')}}
+						</div>
+					@elseif(session('error'))
+						<div class="alert alert-danger" role="alert">
+						  {{session('error')}}
+						</div>
+					@endif
 					<div class="panel panel-profile">
 						<div class="clearfix">
 							<!-- LEFT COLUMN -->
@@ -57,6 +67,9 @@
 								<!-- TABBED CONTENT -->
 								<div class="col-md-12">
 									<!-- TABLE STRIPED -->
+									<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">
+								  Tambah Nilai
+								</button>
 									<div class="panel">
 										<div class="panel-heading">
 											<h3 class="panel-title">Mata Pelajaran</h3>
@@ -96,4 +109,48 @@
 			</div>
 			<!-- END MAIN CONTENT -->
 		</div>
+
+		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			  <div class="modal-dialog" role="document">
+			    <div class="modal-content">
+			      <div class="modal-header">
+			        <h5 class="modal-title" id="exampleModalLabel">Masukan Data Siswa</h5>
+			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+			          <span aria-hidden="true">&times;</span>
+			        </button>
+			      </div>
+
+			      <div class="modal-body">
+			        <form action="/siswa/{{$siswa->id}}/addnilai" method="POST" enctype="multipart/form-data">
+			        	{{csrf_field()}}
+
+					  <div class="form-group {{$errors->has('matapelajaran') ? 'has-error' : ''}}">
+					    <label for="exampleFormControlSelect1">Mata Pelajaran</label>
+					    <select class="form-control" id="mapel" name="matapelajaran">
+					      @foreach($matapelajaran as $mp)
+					      	<option value="{{$mp->id}}">{{$mp->nama}}</option>
+					      @endforeach
+					    </select>
+					    @if($errors->has('matapelajaran'))
+					    	<span class="help-block">{{$errors->first('matapelajaran')}}</span>
+					    @endif
+
+					   <div class="form-group {{$errors->has('nilai') ? 'has-error' : ''}}">
+					    <label for="exampleInputEmail1">Nilai</label>
+					    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="nama_depan" placeholder="Nilai" name="nilai" value="{{old('nilai')}}">
+					    @if($errors->has('nilai'))
+					    	<span class="help-block">{{$errors->first('nilai')}}</span>
+					    @endif
+					  </div>
+
+			      </div>
+			      <div class="modal-footer">
+			        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			        <button type="submit" class="btn btn-primary">Submit</button>
+					</form>
+			      </div>
+			    </div>
+			  </div>
+				</div>
+			</div>
 @endsection
