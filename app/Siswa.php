@@ -28,6 +28,9 @@ class Siswa extends Model
         $mapel=$this->mapel->all();
         $aknilai=0;
         $looping=0;
+        if (!$mapel) {
+            return 0;
+        }
         foreach ($mapel as $mp) {
             $nilai = $this->mapel()->wherePivot('mapel_id',$mp->id)->first()->pivot->nilai;
             $aknilai=$aknilai+$nilai;
