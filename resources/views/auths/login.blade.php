@@ -30,7 +30,7 @@
 					<div class="left">
 						<div class="content">
 							<div class="header">
-								<div class="logo text-center"><img src="{{asset('admin/assets/img/logo-dark.png')}}" alt="Klorofil Logo"></div>
+								<div class="logo text-center"><img src="{{asset('images/histudent-logo2.png')}}" alt="Klorofil Logo"></div>
 								<p class="lead">Login to your account</p>
 							</div>
 							<form class="form-auth-small" action="/postlogin" method="POST">

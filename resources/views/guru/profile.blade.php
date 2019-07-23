@@ -58,8 +58,7 @@
 								<!-- TABBED CONTENT -->
 								<div class="col-md-12">
 									<!-- TABLE STRIPED -->
-									<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">
-								  Tambah Nilai
+									
 								</button>
 									<div class="panel">
 										<div class="panel-heading">

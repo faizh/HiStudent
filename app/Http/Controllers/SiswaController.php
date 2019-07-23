@@ -20,7 +20,7 @@ class SiswaController extends Controller
     public function create(Request $request)
     {
         $this->validate($request,[
-            'nama_depan' => 'required|min:5',
+            'nama_depan' => 'required|min:3',
             'nama_belakang' => 'required',
             'email' => 'required|email|unique:users',
             'jenis_kelamin' => 'required',
@@ -62,7 +62,7 @@ class SiswaController extends Controller
     public function update(Request $request, $id)
     {
         $this->validate($request,[
-            'nama_depan' => 'required|min:5',
+            'nama_depan' => 'required|min:3',
             'nama_belakang' => 'required',
             'jenis_kelamin' => 'required',
             'agama' => 'required',
@@ -98,7 +98,7 @@ class SiswaController extends Controller
 
         //Data CHART
         $categories = [];
-        $nilai=[];
+        $data=[];
         foreach ($matapelajaran as $mp) {
             if ($siswa->mapel()->wherePivot('mapel_id',$mp->id)->first()) {
                 $categories[]=$mp->nama;
