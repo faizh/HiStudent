@@ -15,11 +15,15 @@
 							<div class="panel">
 								<div class="panel-heading">
 									<h1 class="panel-title">Data Siswa</h1>
+									<div class="right">
+											<a href="/siswa/export" class="btn btn-success btn-sm">Export</a>
+									</div>
 								</div>
 								<div class="panel-body">
 									<button type="button" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#exampleModal">
 									  Tambah Data
 									</button>
+
 									<table class="table table-hover">
 										<thead>
 											<tr>
@@ -55,6 +59,8 @@
 							</div>
 							<!-- END TABLE HOVER -->
 						</div>
+					</div>
+
 
 
 <!-- Modal -->

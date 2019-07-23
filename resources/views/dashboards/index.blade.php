@@ -29,7 +29,7 @@
 									@foreach(rangkingParalel() as $siswa)
 									<tr>
 										<td>{{$no++}}</td>
-										<td>{{$siswa->nama_depan}} {{$siswa->nama_belakang}}</td>
+										<td>{{$siswa->namaLengkap()}}</td>
 										<td>{{$siswa->rataRataNilai()}}
 									</tr>
 									@endforeach

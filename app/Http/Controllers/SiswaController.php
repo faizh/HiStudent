@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
+use App\Exports\SiswaExport;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class SiswaController extends Controller
 {
@@ -125,5 +128,10 @@ class SiswaController extends Controller
         $siswa=\App\Siswa::find($idsiswa);
         $siswa->mapel()->detach($idmapel);
         return redirect()->back()->with('sukses','Data Nilai Berhasil Dihapus');
+    }
+
+    public function export() 
+    {
+        return Excel::download(new SiswaExport, 'siswa.xlsx');
     }
 }

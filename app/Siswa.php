@@ -45,4 +45,9 @@ class Siswa extends Model
         }
         return $looping;
     }
+
+    public function namaLengkap()
+    {
+        return $this->nama_depan." ".$this->nama_belakang;
+    }
 }
