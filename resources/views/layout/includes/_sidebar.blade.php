@@ -5,6 +5,7 @@
 						<li><a href="/dashboard" class="active"><i class="lnr lnr-home"></i> <span>Dashboard</span></a></li>
 						@if(auth()->user()->level=='admin')
 						<li><a href="/siswa" class=""><i class="lnr lnr-user"></i> <span>Siswa</span></a></li>
+						<li><a href="/guru" class=""><i class="lnr lnr-user"></i> <span>Guru</span></a></li>
 						@endif
 					</ul>
 				</nav>

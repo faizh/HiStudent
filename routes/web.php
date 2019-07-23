@@ -32,9 +32,14 @@ Route::group(['middleware'=>['auth','checkLevel:admin']],function(){
 	Route::get('/siswa/exportexcel','SiswaController@exportExcel');
 	Route::get('/siswa/exportpdf','SiswaController@exportPdf');
 
-	Route::get('/guru/{id}/profile','GuruController@profile');	
+	Route::get('/guru','GuruController@index');
+	Route::post('/guru/create','GuruController@create');
+	Route::get('/guru/{guru}/profile','GuruController@profile');	
+	Route::get('/guru/{guru}/edit','GuruController@edit');
+	Route::post('/guru/{guru}/update','GuruController@update');
+	Route::get('/guru/{guru}/delete','GuruController@delete');
 });
 
-Route::group(['middleware'=>['auth','checkLevel:admin,siswa']],function(){
+Route::group(['middleware'=>['auth','checkLevel:admin,siswa,guru']],function(){
 	Route::get('/dashboard','DashboardController@index');
 });

@@ -9,7 +9,7 @@
 							<!-- TABLE HOVER -->
 							<div class="panel">
 								<div class="panel-heading">
-									<h1 class="panel-title">Data Siswa</h1>
+									<h1 class="panel-title">Data Guru</h1>
 									<div class="right">
 											<a href="/siswa/exportexcel" class="btn btn-success btn-sm">Export Excel</a>
 											<a href="/siswa/exportpdf" class="btn btn-success btn-sm">Export PDF</a>
@@ -24,27 +24,19 @@
 										<thead>
 											<tr>
 												<th>Nama Depan</th>
-												<th>Nama Belakang</th>
-												<th>Jenis Kelamin</th>
-												<th>Agama</th>
+												<th>No Telepon</th>
 												<th>Alamat</th>
-												<th>Rata-Rata Nilai</th>
-												<th>Jumlah Mapel</th>
 												<th>Aksi</th>
 											</tr>
 										</thead>
 										<tbody>
-											@foreach($data_siswa as $siswa)
+											@foreach($data_guru as $guru)
 											<tr>
-												<td><a href="/siswa/{{$siswa->id}}/profile"> {{$siswa->nama_depan}}</a></td>
-												<td><a href="/siswa/{{$siswa->id}}/profile">{{$siswa->nama_belakang}}</a></td>
-												<td>{{$siswa->jenis_kelamin}}</td>
-												<td>{{$siswa->agama}}</td>
-												<td>{{$siswa->alamat}}</td>
-												<td>{{$siswa->rataRataNilai()}}</td>
-												<td>{{$siswa->jumlahMapel()}}</td>
-												<td><a href="/siswa/{{$siswa->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
-												<a href="#" class="btn btn-danger btn-sm delete" siswa-id="{{$siswa->id}}">Delete</a></td>
+												<td><a href="/guru/{{$guru->id}}/profile"> {{$guru->nama}}</a></td>
+												<td>{{$guru->telepon}}</td>
+												<td>{{$guru->alamat}}</td>
+												<td><a href="/guru/{{$guru->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
+												<a href="#" class="btn btn-danger btn-sm delete" guru-id="{{$guru->id}}">Delete</a></td>
 											</tr>
 										</tbody>
 									@endforeach
@@ -64,27 +56,23 @@
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
 			      <div class="modal-header">
-			        <h5 class="modal-title" id="exampleModalLabel">Masukan Data Siswa</h5>
+			        <h5 class="modal-title" id="exampleModalLabel">Masukan Data Guru</h5>
 			        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
 			          <span aria-hidden="true">&times;</span>
 			        </button>
 			      </div>
 
 			      <div class="modal-body">
-			        <form action="/siswa/create" method="POST" enctype="multipart/form-data">
+			        <form action="/guru/create" method="POST" enctype="multipart/form-data">
 			        	{{csrf_field()}}
 					  <div class="form-group {{$errors->has('nama_depan') ? 'has-error' : ''}}">
-					    <label for="exampleInputEmail1">Nama Depan</label>
-					    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="nama_depan" placeholder="Nama Depan" name="nama_depan" value="{{old('nama_depan')}}">
+					    <label for="exampleInputEmail1">Nama Lengkap</label>
+					    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="nama_depan" placeholder="Nama Lengkap" name="nama" value="{{old('nama_depan')}}">
 					    @if($errors->has('nama_depan'))
-					    	<span class="help-block">{{$errors->first('nama_depan')}}</span>
+					    	<span class="help-block">{{$errors->first('nama')}}</span>
 					    @endif
 					  </div>
 
-					  <div class="form-group">
-					    <label for="exampleInputEmail1">Nama Belakang</label>
-					    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="nama_belakang" placeholder="Nama Belakang" name="nama_belakang" value="{{old('nama_belakang')}}">
-					  </div>
 
 					  <div class="form-group {{$errors->has('email') ? 'has-error' : ''}}">
 					    <label for="exampleInputEmail1">Email</label>
@@ -94,28 +82,11 @@
 					    @endif
 					  </div>
 
-					  <div class="form-group {{$errors->has('jenis_kelamin') ? 'has-error' : ''}}">
-					    <label for="exampleFormControlSelect1">Jenis Kelamin</label>
-					    <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
-					      <option value="L"{{(old('jenis_kelamin')=='L') ? 'selected' : ''}}>Laki-laki</option>
-					      <option value="P"{{(old('jenis_kelamin')=='P') ? 'selected' : ''}}>Perempuan</option>
-					    </select>
-					    @if($errors->has('jenis_kelamin'))
-					    	<span class="help-block">{{$errors->first('jenis_kelamin')}}</span>
-					    @endif
-					  </div>
-
-					  <div class="form-group {{$errors->has('agama') ? 'has-error' : ''}}">
-					    <label for="exampleFormControlSelect1">Agama</label>
-					    <select class="form-control" id="agama" name="agama">
-					      <option value="Islam">Islam</option>
-					      <option value="Kristen">Kristen</option>
-					      <option value="Katolik">Katolik</option>
-					      <option value="Buddha">Buddha</option>
-					      <option value="Konghucu">Konghucu</option>
-					    </select>
-					    @if($errors->has('agama'))
-					    	<span class="help-block">{{$errors->first('agama')}}</span>
+					  <div class="form-group {{$errors->has('telepon') ? 'has-error' : ''}}">
+					    <label for="exampleInputEmail1">No Telepon</label>
+					    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="nama_depan" placeholder="Telepon" name="telepon" value="{{old('telepon')}}">
+					    @if($errors->has('telepon'))
+					    	<span class="help-block">{{$errors->first('telepon')}}</span>
 					    @endif
 					  </div>
 
@@ -148,10 +119,10 @@
 @section('footer')
 <script>
 	$('.delete').click(function(){
-		var siswa_id = $(this).attr('siswa-id');
+		var guru_id = $(this).attr('guru-id');
 		swal({
 		  title: "Yakin ?",
-		  text: "Mau Dihapus Data Siswa Ini Dengan ID : "+siswa_id+" ??",
+		  text: "Mau Dihapus Data Siswa Ini Dengan ID : "+guru_id+" ??",
 		  icon: "warning",
 		  buttons: true,
 		  dangerMode: true,
@@ -159,7 +130,7 @@
 		.then((willDelete) => {
 			console.log(willDelete);
 			if (willDelete) {
-			window.location = "/siswa/"+siswa_id+"/delete";
+			window.location = "/guru/"+guru_id+"/delete";
 		  }
 		});
 	});
