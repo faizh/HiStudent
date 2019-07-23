@@ -11,8 +11,8 @@
 								<div class="panel-heading">
 									<h1 class="panel-title">Data Guru</h1>
 									<div class="right">
-											<a href="/siswa/exportexcel" class="btn btn-success btn-sm">Export Excel</a>
-											<a href="/siswa/exportpdf" class="btn btn-success btn-sm">Export PDF</a>
+											<a href="/guru/exportexcel" class="btn btn-success btn-sm">Export Excel</a>
+											<a href="/guru/exportpdf" class="btn btn-success btn-sm">Export PDF</a>
 									</div>
 								</div>
 								<div class="panel-body">
@@ -23,9 +23,10 @@
 									<table class="table table-hover">
 										<thead>
 											<tr>
-												<th>Nama Depan</th>
+												<th>Nama</th>
 												<th>No Telepon</th>
 												<th>Alamat</th>
+												<th>Guru Pelajaran</th>
 												<th>Aksi</th>
 											</tr>
 										</thead>
@@ -35,6 +36,15 @@
 												<td><a href="/guru/{{$guru->id}}/profile"> {{$guru->nama}}</a></td>
 												<td>{{$guru->telepon}}</td>
 												<td>{{$guru->alamat}}</td>
+												<td>
+													<table>
+														@foreach($mapel as $mp)
+														@if($mp->id==$guru->mapel_id)
+														<tr><td>{{$mp->nama}}</td></tr>
+														@endif
+														@endforeach
+													</table>
+												</td>
 												<td><a href="/guru/{{$guru->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
 												<a href="#" class="btn btn-danger btn-sm delete" guru-id="{{$guru->id}}">Delete</a></td>
 											</tr>
@@ -65,7 +75,20 @@
 			      <div class="modal-body">
 			        <form action="/guru/create" method="POST" enctype="multipart/form-data">
 			        	{{csrf_field()}}
-					  <div class="form-group {{$errors->has('nama_depan') ? 'has-error' : ''}}">
+			       		
+			       		<div class="form-group {{$errors->has('mapel') ? 'has-error' : ''}}">
+						    <label for="exampleFormControlSelect1">Mata Pelajaran</label>
+						    <select class="form-control" id="mapel" name="mapel">
+						    	@foreach(dataMapel() as $mp)
+						    		<option value="{{$mp->id}}">{{$mp->nama}}</option>
+						    	@endforeach
+						    </select>
+						    @if($errors->has('mapel'))
+						    	<span class="help-block">{{$errors->first('mapel')}}</span>
+						    @endif
+					  	</div>
+
+					  <div class="form-group {{$errors->has('nama') ? 'has-error' : ''}}">
 					    <label for="exampleInputEmail1">Nama Lengkap</label>
 					    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="nama_depan" placeholder="Nama Lengkap" name="nama" value="{{old('nama_depan')}}">
 					    @if($errors->has('nama_depan'))

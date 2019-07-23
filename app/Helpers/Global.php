@@ -21,3 +21,22 @@ function totalGuru()
 {
 	return \App\Guru::count();
 }
+
+function dataMapel()
+{
+    $mapel = \App\Mapel::all();
+    return $mapel;
+}
+
+function exportMapel(){
+    $guru = \App\Guru::all();
+    $mapel = \App\Guru::all();
+    foreach ($guru as $g) {
+        foreach ($mapel as $mp) {
+            if ($mp->id==$g->mapel_id) {
+                $export = $mp->nama;
+            }
+        }
+    }
+    return $export;
+}

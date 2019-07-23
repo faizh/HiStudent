@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Mapel extends Model
 {
     protected $table ='mapel';
-    protected $fillable = ['kode','nama','semester'];
+    protected $fillable = ['kode','nama','semester','mapel_id'];
 
     public function siswa()
     {
@@ -16,6 +16,7 @@ class Mapel extends Model
 
     public function guru()
     {
-    	return $this->belongsTo(Guru::class);
+    	// return $this->belongsTo(Guru::class);
+        return $this->hasMany(Mapel::class);
     }
 }

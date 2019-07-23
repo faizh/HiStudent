@@ -19,6 +19,18 @@
 			<div class="panel-body">
 						<form action="/guru/{{$guru->id}}/update" method="POST" enctype="multipart/form-data">
 						        	{{csrf_field()}}
+						        	<div class="form-group {{$errors->has('jenis_kelamin') ? 'has-error' : ''}}">
+									    <label for="exampleFormControlSelect1">Jenis Kelamin</label>
+									    <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
+									    	@foreach(dataMapel() as $mp)
+									    		<option value="{{$mp->id}}" @if($guru->mapel_id==$mp->id) selected @endif>{{$mp->nama}}</option>
+									    	@endforeach
+									    </select>
+									    @if($errors->has('jenis_kelamin'))
+									    	<span class="help-block">{{$errors->first('jenis_kelamin')}}</span>
+									    @endif
+									</div>
+
 								  <div class="form-group {{$errors->has('nama') ? 'has-error' : ''}}">
 								    <label for="exampleInputEmail1">Nama</label>
 								    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="nama_depan" placeholder="Nama Lengkap" name="nama" value="{{$guru->nama}}">

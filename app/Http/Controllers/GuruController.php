@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Exports\GuruExport;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 use App\Guru;
 
 class GuruController extends Controller
@@ -15,16 +18,18 @@ class GuruController extends Controller
     	}else{
     		$data_guru=Guru::all();
     	}
-    	return view('guru.index',['data_guru'=>$data_guru]);
+    	$mapel= \App\Mapel::all();
+    	return view('guru.index',['data_guru'=>$data_guru,'mapel'=>$mapel]);
 	}
     public function profile(Guru $guru)
     {
-    	return view('guru.profile',['guru'=>$guru]);
+    	$mapel= \App\Mapel::find($guru->mapel_id);
+    	return view('guru.profile',['guru'=>$guru,'mapel'=>$mapel]);
     }
 
     public function create(Request $request)
     {
-    	// dd($request);
+    	// dd($mapel);
     	$this->validate($request, [
     		'nama' => 'required|min:5',
     		'email' => 'required|unique:users',
@@ -41,8 +46,15 @@ class GuruController extends Controller
     	$user->remember_token=str_random(10);
     	$user->save();
 
+
     	$request->request->add(['user_id'=>$user->id]);
-    	$guru= Guru::create($request->all());
+    	$mapel = \App\Mapel::find($request->mapel);
+    	$guru = new Guru;
+    	$guru->nama=$request->nama;
+    	$guru->telepon=$request->telepon;
+    	$guru->alamat=$request->alamat;
+    	$guru->mapel_id=$mapel->id;
+    	$guru->save();
 
     	if ($request->hasFile('avatar')) {
     		$request->file('avatar')->move('images/',$request->file('avatar')->getClientOriginalName());
@@ -85,5 +97,18 @@ class GuruController extends Controller
     {
     	$guru->delete();
     	return redirect ('/guru')->with('sukses','Data Berhasil Di Hapus');
+    }
+
+    public function exportExcel()
+    {
+    	 return Excel::download(new GuruExport, 'guru.xlsx');
+    }
+
+    public function exportPdf()
+    {   
+        $guru = Guru::all();
+        $mapel = \App\Mapel::all();
+        $pdf = PDF::loadView('export.gurupdf', ['guru'=>$guru,'mapel'=>$mapel]);
+        return $pdf->download('guru.pdf');
     }
 }

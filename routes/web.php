@@ -38,6 +38,9 @@ Route::group(['middleware'=>['auth','checkLevel:admin']],function(){
 	Route::get('/guru/{guru}/edit','GuruController@edit');
 	Route::post('/guru/{guru}/update','GuruController@update');
 	Route::get('/guru/{guru}/delete','GuruController@delete');
+	Route::get('/guru/exportexcel','GuruController@exportExcel');
+	Route::get('/guru/exportpdf','GuruController@exportPdf');
+
 });
 
 Route::group(['middleware'=>['auth','checkLevel:admin,siswa,guru']],function(){

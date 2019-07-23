@@ -12,6 +12,7 @@ class Guru extends Model
 
     public function mapel()
     {
+    	// return $this->hasMany(Mapel::class);
     	return $this->hasMany(Mapel::class);
     }
 
@@ -23,4 +24,17 @@ class Guru extends Model
 
     	return asset('images/'.$this->avatar);
     }
+
+    public function exportMapel(){
+    $guru = \App\Guru::all();
+    $mapel = \App\Guru::all();
+    foreach ($guru as $g) {
+        foreach ($mapel as $mp) {
+            if ($mp->id==$g->mapel_id) {
+                $export = $mp->nama;
+            }
+        }
+    }
+    return $export;
+	}
 }

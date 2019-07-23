@@ -74,13 +74,11 @@
 													</tr>
 												</thead>
 												<tbody>
-													@foreach($guru->mapel as$mapel)
 													<tr>
 														<td>{{$mapel->kode}}</td>
 														<td>{{$mapel->nama}}</td>
 														<td>{{$mapel->semester}}</td>
 													</tr>
-													@endforeach
 												</tbody>
 											</table>
 										</div>
