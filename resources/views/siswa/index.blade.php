@@ -16,7 +16,8 @@
 								<div class="panel-heading">
 									<h1 class="panel-title">Data Siswa</h1>
 									<div class="right">
-											<a href="/siswa/export" class="btn btn-success btn-sm">Export</a>
+											<a href="/siswa/exportexcel" class="btn btn-success btn-sm">Export Excel</a>
+											<a href="/siswa/exportpdf" class="btn btn-success btn-sm">Export PDF</a>
 									</div>
 								</div>
 								<div class="panel-body">

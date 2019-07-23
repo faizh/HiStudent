@@ -6,6 +6,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
 use App\Exports\SiswaExport;
 use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 
 class SiswaController extends Controller
@@ -130,8 +131,15 @@ class SiswaController extends Controller
         return redirect()->back()->with('sukses','Data Nilai Berhasil Dihapus');
     }
 
-    public function export() 
+    public function exportExcel() 
     {
         return Excel::download(new SiswaExport, 'siswa.xlsx');
+    }
+
+    public function exportPdf()
+    {   
+        $siswa=\App\Siswa::all();
+        $pdf = PDF::loadView('export.siswapdf', ['siswa'=>$siswa]);
+        return $pdf->download('siswa.pdf');
     }
 }
