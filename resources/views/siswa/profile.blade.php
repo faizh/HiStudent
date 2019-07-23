@@ -10,15 +10,6 @@
 			<!-- MAIN CONTENT -->
 			<div class="main-content">
 				<div class="container-fluid">
-					@if(session('sukses'))
-						<div class="alert alert-success" role="alert">
-						  {{session('sukses')}}
-						</div>
-					@elseif(session('error'))
-						<div class="alert alert-danger" role="alert">
-						  {{session('error')}}
-						</div>
-					@endif
 					<div class="panel panel-profile">
 						<div class="clearfix">
 							<!-- LEFT COLUMN -->
@@ -98,7 +89,7 @@
 														<td>{{$mapel->semester}}</td>
 														<td><a href="#" class="nilai" data-type="text" data-pk="{{$mapel->id}}" data-url="/api/siswa/{{$siswa->id}}/editnilai" data-title="Masukan Nilai">{{$mapel->pivot->nilai}}</a></td>
 														<td><a href="/guru/{{$mapel->guru_id}}/profile">{{$mapel->guru->nama}}</a></td>
-														<td><a href="/siswa/{{$siswa->id}}/{{$mapel->id}}/deletenilai" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Mau Dihapus?')">Delete</a></td>
+														<td><a href="#" class="btn btn-danger btn-sm delete" siswa-id="{{$siswa->id}}" mapel-id="{{$mapel->id}}">Delete</a></td>
 													</tr>
 													@endforeach
 												</tbody>
@@ -214,6 +205,26 @@
 		$(document).ready(function() {
 		    $('.nilai').editable();
 		});
+	</script>
+
+	<script>
+	$('.delete').click(function(){
+		var siswa_id = $(this).attr('siswa-id');
+		var mapel_id = $(this).attr('mapel-id');
+		swal({
+		  title: "Yakin ?",
+		  text: "Mau Dihapus Data Pelajaran Ini ??",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((willDelete) => {
+			console.log(willDelete);
+			if (willDelete) {
+			window.location = "/siswa/"+siswa_id+"/"+mapel_id+"/deletenilai";
+		  }
+		});
+	});
 	</script>
 
 @endsection

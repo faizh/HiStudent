@@ -4,11 +4,6 @@
 <div class="main">
 			<div class="main-content">
 				<div class="container-fluid">
-@if(session('sukses'))
-		<div class="alert alert-success" role="alert">
-		  {{session('sukses')}}
-		</div>
-		@endif
 
 <div class="col-md-12">
 							<!-- TABLE HOVER -->
@@ -49,7 +44,7 @@
 												<td>{{$siswa->rataRataNilai()}}</td>
 												<td>{{$siswa->jumlahMapel()}}</td>
 												<td><a href="/siswa/{{$siswa->id}}/edit" class="btn btn-warning btn-sm">Edit</a>
-													<a href="/siswa/{{$siswa->id}}/delete" class="btn btn-danger btn-sm" onclick="return confirm('Yakin Mau Dihapus?')">Delete</a></td>
+												<td><a href="#" class="btn btn-danger btn-sm delete" siswa-id="{{$siswa->id}}">Delete</a></td>
 											</tr>
 										</tbody>
 									@endforeach
@@ -149,3 +144,25 @@
 			</div>
 		</div>
 @stop
+
+@section('footer')
+<script>
+	$('.delete').click(function(){
+		var siswa_id = $(this).attr('siswa-id');
+		swal({
+		  title: "Yakin ?",
+		  text: "Mau Dihapus Data Siswa Ini Dengan ID : "+siswa_id+" ??",
+		  icon: "warning",
+		  buttons: true,
+		  dangerMode: true,
+		})
+		.then((willDelete) => {
+			console.log(willDelete);
+			if (willDelete) {
+			window.location = "/siswa/"+siswa_id+"/delete";
+		  }
+		});
+	});
+</script>
+
+@endsection
