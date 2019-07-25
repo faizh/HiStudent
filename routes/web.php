@@ -41,6 +41,13 @@ Route::group(['middleware'=>['auth','checkLevel:admin']],function(){
 	Route::get('/guru/exportexcel','GuruController@exportExcel');
 	Route::get('/guru/exportpdf','GuruController@exportPdf');
 
+	Route::get('/mapel','MapelController@index');
+	Route::post('/mapel/create','MapelController@create');
+	Route::get('/mapel/{mapel}/edit','MapelController@edit');
+	Route::post('/mapel/{mapel}/update','MapelController@update');
+	Route::get('/mapel/{mapel}/delete','MapelController@delete');
+	Route::get('/mapel/{mapel}/profile','MapelController@profile');
+
 });
 
 Route::group(['middleware'=>['auth','checkLevel:admin,siswa,guru']],function(){

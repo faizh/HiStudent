@@ -19,12 +19,12 @@ class GuruController extends Controller
     		$data_guru=Guru::all();
     	}
     	$mapel= \App\Mapel::all();
-    	return view('guru.index',['data_guru'=>$data_guru,'mapel'=>$mapel]);
+    	return view('guru.index',['data_guru'=>$data_guru,'mapel'=>$mapel,'link'=>'HiStudent | Guru','active'=>'guru']);
 	}
     public function profile(Guru $guru)
     {
     	$mapel= \App\Mapel::find($guru->mapel_id);
-    	return view('guru.profile',['guru'=>$guru,'mapel'=>$mapel]);
+    	return view('guru.profile',['guru'=>$guru,'mapel'=>$mapel,'link'=>'HiStudent | Guru','active'=>'guru']);
     }
 
     public function create(Request $request)
@@ -68,11 +68,12 @@ class GuruController extends Controller
 
     public function edit(Guru $guru)
     {
-    	return view('guru.edit',['guru'=>$guru]);
+    	return view('guru.edit',['guru'=>$guru,'link'=>'HiStudent | Guru','active'=>'guru']);
     }
 
     public function update(Request $request, Guru $guru)
     {
+        
     	$this->validate($request, [
     		'nama' => 'required|min:5',
     		'telepon' => 'required',

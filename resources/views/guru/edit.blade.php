@@ -20,8 +20,8 @@
 						<form action="/guru/{{$guru->id}}/update" method="POST" enctype="multipart/form-data">
 						        	{{csrf_field()}}
 						        	<div class="form-group {{$errors->has('jenis_kelamin') ? 'has-error' : ''}}">
-									    <label for="exampleFormControlSelect1">Jenis Kelamin</label>
-									    <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">
+									    <label for="exampleFormControlSelect1">Mata Pelajaran</label>
+									    <select class="form-control" id="jenis_kelamin" name="mapel_id">
 									    	@foreach(dataMapel() as $mp)
 									    		<option value="{{$mp->id}}" @if($guru->mapel_id==$mp->id) selected @endif>{{$mp->nama}}</option>
 									    	@endforeach

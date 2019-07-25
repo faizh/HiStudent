@@ -8,6 +8,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-    	return view('dashboards.index');
+    	return view('dashboards.index',['link'=>'HiStudent | Dashboard','active'=>'dashboard']);
     }
 }

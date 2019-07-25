@@ -19,7 +19,7 @@ class SiswaController extends Controller
     	}else{
     		$data_siswa=Siswa::all();
     	}
-    	return view('siswa.index',['data_siswa'=>$data_siswa]);
+    	return view('siswa.index',['data_siswa'=>$data_siswa,'link'=>'HiStudent | Siswa','active'=>'siswa']);
     }
 
     public function create(Request $request)
@@ -62,7 +62,7 @@ class SiswaController extends Controller
 
     public function edit(Siswa $siswa)
     {
-    	return view('siswa.edit',['siswa'=>$siswa]);
+    	return view('siswa.edit',['siswa'=>$siswa, 'link'=>'HiStudent | Siswa','active'=>'siswa']);
     }
 
     public function update(Request $request, Siswa $siswa)
@@ -110,7 +110,7 @@ class SiswaController extends Controller
             }
         }
 
-        return view('siswa.profile',['siswa'=>$siswa,'matapelajaran'=>$matapelajaran, 'categories'=>$categories,'data'=>$data]);
+        return view('siswa.profile',['siswa'=>$siswa,'matapelajaran'=>$matapelajaran, 'categories'=>$categories,'data'=>$data,'link'=>'HiStudent | Siswa','active'=>'siswa']);
     }
 
     public function addnilai(Request $request, $idsiswa)
