@@ -13,7 +13,7 @@ class Guru extends Model
     public function mapel()
     {
     	// return $this->hasMany(Mapel::class);
-    	return $this->hasMany(Mapel::class);
+    	return $this->belongsTo(Mapel::class);
     }
 
     public function getAvatar()
@@ -26,14 +26,11 @@ class Guru extends Model
     }
 
     public function exportMapel(){
-    $guru = \App\Guru::all();
-    $mapel = \App\Guru::all();
-    foreach ($guru as $g) {
-        foreach ($mapel as $mp) {
-            if ($mp->id==$g->mapel_id) {
-                $export = $mp->nama;
-            }
-        }
+
+    $guru = Guru::all();
+    $mapel = $this->mapel->all();
+    foreach ($mapel as $mp) {
+        $export= $this->mapel()->where('id',$mp->id)->first()->mapel->nama;
     }
     return $export;
 	}

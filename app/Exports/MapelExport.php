@@ -2,18 +2,18 @@
 
 namespace App\Exports;
 
-use App\Guru;
+use App\Mapel;
 use Maatwebsite\Excel\Concerns\FromCollection;
 use Maatwebsite\Excel\Concerns\WithMapping;
 use Maatwebsite\Excel\Concerns\WithHeadings;
 use Illuminate\Contracts\View\View;
 use Maatwebsite\Excel\Concerns\FromView;
 
-class GuruExport implements FromView
+class MapelExport implements FromView
 {
     public function view(): View
     {
-        $mapel = \App\Mapel::all();
-        return view('export.guruexcel', ['guru' => Guru::all(),'mapel'=>$mapel]);
+        $guru=\App\Guru::all();
+        return view('export.mapelexcel', ['mapel' => Mapel::all(),'guru'=>$guru]);
     }
 }

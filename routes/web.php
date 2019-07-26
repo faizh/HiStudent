@@ -47,6 +47,8 @@ Route::group(['middleware'=>['auth','checkLevel:admin']],function(){
 	Route::post('/mapel/{mapel}/update','MapelController@update');
 	Route::get('/mapel/{mapel}/delete','MapelController@delete');
 	Route::get('/mapel/{mapel}/profile','MapelController@profile');
+	Route::get('/mapel/exportexcel','MapelController@exportExcel');
+	Route::get('/mapel/exportpdf','MapelController@exportPdf');
 
 });
 

@@ -10,10 +10,10 @@
 							<div class="panel">
 								<div class="panel-heading">
 									<h1 class="panel-title">Data mapel</h1>
-									<!-- <div class="right">
+									<div class="right">
 											<a href="/mapel/exportexcel" class="btn btn-success btn-sm">Export Excel</a>
 											<a href="/mapel/exportpdf" class="btn btn-success btn-sm">Export PDF</a>
-									</div> -->
+									</div>
 								</div>
 								<div class="panel-body">
 									<button type="button" class="btn btn-primary float-right btn-sm" data-toggle="modal" data-target="#exampleModal">

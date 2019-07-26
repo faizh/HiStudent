@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Mapel;
+use App\Exports\MapelExport;
+use Maatwebsite\Excel\Facades\Excel;
+use PDF;
 
 class MapelController extends Controller
 {
@@ -50,5 +53,19 @@ class MapelController extends Controller
     public function profile(Mapel $mapel)
     {
     	return view('mapel.profile',['data_mapel'=>$mapel]);
+    }
+
+    public function exportExcel() 
+    {
+        return Excel::download(new MapelExport, 'mapel.xlsx');
+    }
+
+    public function exportPdf()
+    {   
+        $mapel=Mapel::all();
+        $guru=\App\Guru::all();
+        // return view('export.mapelpdf', ['mapel'=>$mapel,'guru'=>$guru]);
+        $pdf = PDF::loadView('export.mapelpdf', ['mapel'=>$mapel,'guru'=>$guru]);
+        return $pdf->download('mapel.pdf');
     }
 }
