@@ -10,9 +10,9 @@
 						
 						@if(auth()->user()->level=='admin')
 							@if($active=="siswa")
-								<li><a href="/siswa" class="active"><i class="lnr lnr-user"></i> <span>Siswa</span></a></li>
+								<li><a href="/kelas" class="active"><i class="lnr lnr-user"></i> <span>Siswa</span></a></li>
 							@else
-								<li><a href="/siswa" class=""><i class="lnr lnr-user"></i> <span>Siswa</span></a></li>
+								<li><a href="/kelas" class=""><i class="lnr lnr-user"></i> <span>Siswa</span></a></li>
 							@endif
 
 							@if($active=="guru")

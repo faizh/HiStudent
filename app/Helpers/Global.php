@@ -27,3 +27,19 @@ function dataMapel()
     $mapel = \App\Mapel::all();
     return $mapel;
 }
+
+function dataSiswa()
+{
+    $siswa = \App\Siswa::all();
+    return $siswa;
+}
+
+function dataKelas()
+{
+    return \App\Kelas::all();
+}
+
+function dataGuru()
+{
+    return \App\Guru::all();
+}

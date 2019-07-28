@@ -50,6 +50,12 @@ Route::group(['middleware'=>['auth','checkLevel:admin']],function(){
 	Route::get('/mapel/exportexcel','MapelController@exportExcel');
 	Route::get('/mapel/exportpdf','MapelController@exportPdf');
 
+	Route::get('/kelas','KelasController@index');
+	Route::post('/kelas/create','KelasController@create');
+	Route::get('/kelas/{id}/siswa','SiswaController@kelas');
+	Route::get('/kelas/{kelas}/edit','KelasController@edit');
+	Route::post('kelas/{id}/update','KelasController@update');
+
 });
 
 Route::group(['middleware'=>['auth','checkLevel:admin,siswa,guru']],function(){

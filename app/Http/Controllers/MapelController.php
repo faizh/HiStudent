@@ -37,7 +37,6 @@ class MapelController extends Controller
     {
     	$this->validate($request,[
     		'nama' => 'required',
-    		'kode' => 'required|unique:mapel',
     		'semester' => 'required'
     	]);
 

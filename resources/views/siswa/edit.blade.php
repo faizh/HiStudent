@@ -35,6 +35,18 @@
 								    @endif
 								  </div>
 
+								  <div class="form-group {{$errors->has('nama_depan') ? 'has-error' : ''}}">
+								    <label for="exampleInputEmail1">Kelas</label>
+								    <select class="form-control" id="kelas_id" name="kelas_id">
+								    	@foreach($kelas as $k)
+								    		<option value="{{$k->id}}" @if($k->id==$siswa->kelas_id) selected @endif>{{$k->nama}}</option>	
+								    	@endforeach
+								    </select>
+								    @if($errors->has('nama_depan'))
+								    	<span class="help-block">{{$errors->first('nama_depan')}}</span>
+								    @endif
+								  </div>
+
 								  <div class="form-group {{$errors->has('jenis_kelamin') ? 'has-error' : ''}}">
 								    <label for="exampleFormControlSelect1">Jenis Kelamin</label>
 								    <select class="form-control" id="jenis_kelamin" name="jenis_kelamin">

@@ -19,14 +19,15 @@ class SiswaController extends Controller
     	}else{
     		$data_siswa=Siswa::all();
     	}
-    	return view('siswa.index',['data_siswa'=>$data_siswa,'link'=>'HiStudent | Siswa','active'=>'siswa']);
+
+    	return view('siswa.index',['data_siswa'=>$data_siswa,'link'=>'HiStudent | Siswa','active'=>'siswa','kelas'=>dataKelas()]);
     }
 
     public function create(Request $request)
     {
         
         $this->validate($request,[
-            'nama_depan' => 'required|min:3',
+            'nama_depan' => 'required|min:1',
             'nama_belakang' => 'required',
             'email' => 'required|email|unique:users',
             'jenis_kelamin' => 'required',
@@ -62,13 +63,13 @@ class SiswaController extends Controller
 
     public function edit(Siswa $siswa)
     {
-    	return view('siswa.edit',['siswa'=>$siswa, 'link'=>'HiStudent | Siswa','active'=>'siswa']);
+    	return view('siswa.edit',['siswa'=>$siswa, 'link'=>'HiStudent | Siswa','active'=>'siswa','kelas'=>dataKelas()]);
     }
 
     public function update(Request $request, Siswa $siswa)
     {
         $this->validate($request,[
-            'nama_depan' => 'required|min:3',
+            'nama_depan' => 'required|min:1',
             'nama_belakang' => 'required',
             'jenis_kelamin' => 'required',
             'agama' => 'required',
@@ -140,5 +141,11 @@ class SiswaController extends Controller
         $siswa=Siswa::all();
         $pdf = PDF::loadView('export.siswapdf', ['siswa'=>$siswa]);
         return $pdf->download('siswa.pdf');
+    }
+
+    public function kelas($id)
+    {
+        $data_siswa=Siswa::where('kelas_id','LIKE','%'.$id.'%')->get();    
+        return view('siswa.index',['data_siswa'=>$data_siswa,'link'=>'HiStudent | Siswa','active'=>'siswa','kelas'=>dataKelas(),'id'=>$id]);
     }
 }

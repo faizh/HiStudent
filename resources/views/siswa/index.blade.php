@@ -11,6 +11,7 @@
 								<div class="panel-heading">
 									<h1 class="panel-title">Data Siswa</h1>
 									<div class="right">
+											<a href="/siswa" class="btn btn-primary btn-sm">Lihat Semua Siswa</a>
 											<a href="/siswa/exportexcel" class="btn btn-success btn-sm">Export Excel</a>
 											<a href="/siswa/exportpdf" class="btn btn-success btn-sm">Export PDF</a>
 									</div>
@@ -25,6 +26,7 @@
 											<tr>
 												<th>Nama Depan</th>
 												<th>Nama Belakang</th>
+												<th>Kelas</th>
 												<th>Jenis Kelamin</th>
 												<th>Agama</th>
 												<th>Alamat</th>
@@ -38,6 +40,15 @@
 											<tr>
 												<td><a href="/siswa/{{$siswa->id}}/profile"> {{$siswa->nama_depan}}</a></td>
 												<td><a href="/siswa/{{$siswa->id}}/profile">{{$siswa->nama_belakang}}</a></td>
+												<td>
+													@foreach($kelas as $k)
+													<a href="/kelas/{{$k->id}}/siswa">
+														@if($k->id == $siswa->kelas_id)
+															{{$k->nama}}
+														@endif
+													</a>
+													@endforeach
+												</td>
 												<td>{{$siswa->jenis_kelamin}}</td>
 												<td>{{$siswa->agama}}</td>
 												<td>{{$siswa->alamat}}</td>
@@ -84,6 +95,21 @@
 					  <div class="form-group">
 					    <label for="exampleInputEmail1">Nama Belakang</label>
 					    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="nama_belakang" placeholder="Nama Belakang" name="nama_belakang" value="{{old('nama_belakang')}}">
+					  </div>
+
+					  <div class="form-group {{$errors->has('nama_depan') ? 'has-error' : ''}}">
+					    <label for="exampleInputEmail1">Kelas</label>
+					    <select class="form-control" id="jenis_kelamin" name="kelas_id">
+					    	@foreach($kelas as $k)
+					    		@if(Session::has('id'))
+						    		<option value="{{$k->id}}" @if($k->id==$id) selected @endif>{{$k->nama}}</option>	
+					    		@endif
+					    		<option value="{{$k->id}}">{{$k->nama}}</option>	
+					    	@endforeach
+					    </select>
+					    @if($errors->has('nama_depan'))
+					    	<span class="help-block">{{$errors->first('nama_depan')}}</span>
+					    @endif
 					  </div>
 
 					  <div class="form-group {{$errors->has('email') ? 'has-error' : ''}}">
