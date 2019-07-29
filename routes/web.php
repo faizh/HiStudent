@@ -54,7 +54,11 @@ Route::group(['middleware'=>['auth','checkLevel:admin']],function(){
 	Route::post('/kelas/create','KelasController@create');
 	Route::get('/kelas/{id}/siswa','SiswaController@kelas');
 	Route::get('/kelas/{kelas}/edit','KelasController@edit');
-	Route::post('kelas/{id}/update','KelasController@update');
+	Route::post('/kelas/{kelas}/update','KelasController@update');
+	Route::get('/kelas/{kelas}/delete','KelasController@delete');
+
+	Route::get('/jadwal','JadwalController@index');
+	Route::post('/jadwal/create','JadwalController@create');
 
 });
 

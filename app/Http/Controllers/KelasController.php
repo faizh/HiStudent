@@ -31,11 +31,19 @@ class KelasController extends Controller
 
     public function edit(Kelas $kelas)
     {
-    	return view('kelas.edit',['kelas'=>$kelas, 'link'=>'HiStudent | Siswa','active'=>'siswa']);
+    	return view('kelas.edit',['kelas'=>$kelas, 'link'=>'HiStudent | Siswa','active'=>'siswa','guru'=>dataGuru()]);
     }
 
     public function update(Request $request, Kelas $kelas)
     {
-    	
+    	// dd($request);
+    	$kelas->update($request->all());
+    	return redirect('/kelas')->with('sukses','Data Berhasil Diupdate');
+    }
+
+    public function delete(Kelas $kelas)
+    {
+    	$kelas->delete();
+    	return redirect('/kelas')->with('sukses','Data Berhasil Dihapus');
     }
 }

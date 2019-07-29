@@ -31,10 +31,10 @@
 
 								  <div class="form-group {{$errors->has('jenis_kelamin') ? 'has-error' : ''}}">
 									    <label for="exampleFormControlSelect1">Wali Kelas</label>
-									    <select class="form-control" id="jenis_kelamin" name="mapel_id">
-									    	@foreach(dataMapel() as $mp)
-									    		<option value="{{$mp->id}}" @if($guru->mapel_id==$mp->id) selected @endif>{{$mp->nama}}</option>
-									    	@endforeach
+									    <select class="form-control" id="jenis_kelamin" name="guru_id">
+								    		@foreach($guru as $g)
+									    		<option value="{{$g->id}}" @if($g->id==$kelas->guru_id) selected @endif>{{$g->nama}}</option>
+								    		@endforeach
 									    </select>
 									    @if($errors->has('jenis_kelamin'))
 									    	<span class="help-block">{{$errors->first('jenis_kelamin')}}</span>

@@ -27,6 +27,11 @@
 								<li><a href="/mapel" class=""><i class="lnr lnr-book"></i> <span>Mata Pelajaran</span></a></li>
 							@endif
 
+							@if($active=="jadwal")
+								<li><a href="/jadwal" class="active"><i class="lnr lnr-calendar-full"></i> <span>Jadwal Pelajaran</span></a></li>
+							@else
+								<li><a href="/jadwal" class=""><i class="lnr lnr-calendar-full"></i> <span>Jadwal Pelajaran</span></a></li>
+							@endif
 						
 						@endif
 					</ul>

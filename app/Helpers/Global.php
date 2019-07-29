@@ -43,3 +43,18 @@ function dataGuru()
 {
     return \App\Guru::all();
 }
+
+function dataJadwal($hari)
+{
+    if ($hari=='senin') {
+        return \App\Jadwal::all()->take(10);
+    }elseif ($hari=='selasa') {
+        return \App\Jadwal::skip(10)->take(10)->get();
+    }elseif ($hari=='rabu') {
+        return \App\Jadwal::skip(20)->take(10)->get();
+    }elseif ($hari=='kamis') {
+        return \App\Jadwal::skip(30)->take(10)->get();
+    }elseif ($hari=='jumat') {
+        return \App\Jadwal::skip(40)->take(10)->get();
+    }
+}
