@@ -39,9 +39,8 @@
 					</div>
 				</div>
 					<!-- END TABLE STRIPED -->
-		
 
-				<div class="col col-md-6">
+				<div class="col-md-6">
 						<div class="panel panel-headline">
 								<div class="panel-heading">
 									<h3 class="panel-title">Weekly Overview</h3>
@@ -67,8 +66,68 @@
 											</div>
 										</div>
 									</div>
+									<div class="row">
+										<div class="col-md-6">
+												<div class="metric">
+													<span class="icon"><i class="lnr lnr-book"></i></span>
+													<p>
+														<span class="number">{{totalMapel()}}</span>
+														<span class="title">Mata Pelajaran</span>
+													</p>
+												</div>
+											</div>
+											
+										</div>
 								</div>
-							</div>
+								</div>
+					</div>
+				</div>
+
+				<div class="row">
+					<div class="col-md-6">
+						<div class="panel panel-headline">
+								<div class="panel-heading">
+									<h3 class="panel-title">Jadwal Pelajaran</h3>
+								</div>
+								<div class="panel-body">
+									<table class="table table-bordered table-striped" >
+											<thead>
+												<tr>
+													<th>Jam</th>
+													<th colspan="4">{{namaHari()}}</th>
+												</tr>
+											</thead>
+											<tbody>
+												<tr>
+													<td>#</td>
+													<td>XII RPL 1</td>
+													<td>XII RPL 2</td>
+													<td>XII RPL 3</td>
+													<td>XII RPL 4</td>
+												</tr>
+												@php
+												$i=1;
+												$hari=date('D');
+												@endphp
+												@foreach(dataJadwal($hari) as $jadwal)
+												<tr>
+													<td>{{$i++}}</td>
+													<td>{{$jadwal->rpl1}}</td>
+													<td>{{$jadwal->rpl2}}</td>
+													<td>{{$jadwal->rpl3}}</td>
+													<td>{{$jadwal->rpl4}}</td>
+													@if($i==3 or $i==7)
+													<tr>															
+														<td colspan="5" style="text-align: center">Istirahat</td>
+													</tr>
+													@endif
+												</tr>
+												@endforeach
+											</tbody>
+										</table>
+								</div>
+										
+						</div>
 					</div>
 				</div>
 			</div>

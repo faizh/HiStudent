@@ -22,6 +22,11 @@ function totalGuru()
 	return \App\Guru::count();
 }
 
+function totalMapel()
+{
+    return \App\Mapel::count();
+}
+
 function dataMapel()
 {
     $mapel = \App\Mapel::all();
@@ -46,15 +51,34 @@ function dataGuru()
 
 function dataJadwal($hari)
 {
-    if ($hari=='senin') {
+    if ($hari=='Mon') {
         return \App\Jadwal::all()->take(10);
-    }elseif ($hari=='selasa') {
+    }elseif ($hari=='Tue') {
         return \App\Jadwal::skip(10)->take(10)->get();
-    }elseif ($hari=='rabu') {
+    }elseif ($hari=='Wed') {
         return \App\Jadwal::skip(20)->take(10)->get();
-    }elseif ($hari=='kamis') {
+    }elseif ($hari=='Thu') {
         return \App\Jadwal::skip(30)->take(10)->get();
-    }elseif ($hari=='jumat') {
+    }elseif ($hari=='Fri') {
         return \App\Jadwal::skip(40)->take(10)->get();
+    }else{
+        return \App\Jadwal::all()->take(10);
+    }
+}
+
+function namaHari(){
+    $hari=date('D');
+    if ($hari=="Mon") {
+        return "Senin";
+    }elseif ($hari=="Tue") {
+        return "Selasa";
+    }elseif ($hari=="Wed") {
+        return "Rabu";
+    }elseif ($hari=="Thu") {
+        return "Kamis";
+    }elseif ($hari=="Fri") {
+        return "Jumat";
+    }else{
+        return "Senin";
     }
 }

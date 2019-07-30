@@ -23,7 +23,7 @@
 								</div>
 									<div class="row-md-6">
 										<div class="col-md-4">
-											<table class="table table-bordered">
+											<table class="table table-bordered table-hover">
 												<thead>
 													<tr>
 														<th>Jam</th>
@@ -41,7 +41,7 @@
 													@php
 													$i=1;
 													@endphp
-													@foreach(dataJadwal('senin') as $jadwal)
+													@foreach(dataJadwal('Mon') as $jadwal)
 													<tr>
 														<td>{{$i++}}</td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl1" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl1}}</a></td>
@@ -61,7 +61,7 @@
 										</div>
 
 										<div class="col-md-4">
-											<table class="table table-bordered">
+											<table class="table table-bordered table-hover">
 												<thead>
 													<tr>
 														<th>Jam</th>
@@ -79,7 +79,7 @@
 													@php
 													$i=1;
 													@endphp
-													@foreach(dataJadwal('selasa') as $jadwal)
+													@foreach(dataJadwal('Tue') as $jadwal)
 													<tr>
 														<td>{{$i++}}</td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl1" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl1}}</a></td>
@@ -99,7 +99,7 @@
 										</div>
 
 										<div class="col-md-4">
-											<table class="table table-bordered">
+											<table class="table table-bordered table-hover">
 												<thead>
 													<tr>
 														<th>Jam</th>
@@ -117,7 +117,7 @@
 													@php
 													$i=1;
 													@endphp
-													@foreach(dataJadwal('rabu') as $jadwal)
+													@foreach(dataJadwal('Wed') as $jadwal)
 													<tr>
 														<td>{{$i++}}</td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl1" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl1}}</a></td>
@@ -138,7 +138,7 @@
 
 									<div class="row-md-6">
 										<div class="col-md-4">
-											<table class="table table-bordered">
+											<table class="table table-bordered table-hover">
 												<thead>
 													<tr>
 														<th>Jam</th>
@@ -156,7 +156,7 @@
 													@php
 													$i=1;
 													@endphp
-													@foreach(dataJadwal('kamis') as $jadwal)
+													@foreach(dataJadwal('Thu') as $jadwal)
 													<tr>
 														<td>{{$i++}}</td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl1" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl1}}</a></td>
@@ -175,7 +175,7 @@
 										</div>
 
 										<div class="col-md-4">
-											<table class="table table-bordered">
+											<table class="table table-bordered table-hover">
 												<thead>
 													<tr>
 														<th>Jam</th>
@@ -193,7 +193,7 @@
 													@php
 													$i=1;
 													@endphp
-													@foreach(dataJadwal('jumat') as $jadwal)
+													@foreach(dataJadwal('Fri') as $jadwal)
 													<tr>
 														<td>{{$i++}}</td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl1" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl1}}</a></td>
