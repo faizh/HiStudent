@@ -86,7 +86,7 @@
 														<td>{{$mapel->kode}}</td>
 														<td>{{$mapel->nama}}</td>
 														<td>{{$mapel->semester}}</td>
-														<td><a href="#" class="nilai" data-type="text" data-pk="{{$mapel->id}}" data-url="/api/siswa/{{$siswa->id}}/editnilai" data-title="Masukan Nilai">{{$mapel->pivot->nilai}}</a></td>
+														<td><a href="#" class="nilai" data-type="select" data-pk="{{$mapel->id}}" data-url="/api/siswa/{{$siswa->id}}/editnilai" data-title="Masukan Nilai">{{$mapel->pivot->nilai}}</a></td>
 														<td><a href="#" class="btn btn-danger btn-sm delete" siswa-id="{{$siswa->id}}" mapel-id="{{$mapel->id}}">Delete</a></td>
 													</tr>
 													@endforeach
@@ -201,7 +201,7 @@
 		});
 
 		$(document).ready(function() {
-		    $('.nilai').editable();
+		    $('.nilai').editable({});
 		});
 	</script>
 

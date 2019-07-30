@@ -1,5 +1,9 @@
 @extends('layout.master')
 
+@section('header')
+<link href="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/css/bootstrap-editable.css" rel="stylesheet"/>
+@endsection
+
 @section('content')
 <div class="main">
 			<div class="main-content">
@@ -40,10 +44,10 @@
 													@foreach(dataJadwal('senin') as $jadwal)
 													<tr>
 														<td>{{$i++}}</td>
-														<td>{{$jadwal->rpl1}}</td>
-														<td>{{$jadwal->rpl2}}</td>
-														<td>{{$jadwal->rpl3}}</td>
-														<td>{{$jadwal->rpl4}}</td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl1" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl1}}</a></td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl2" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl2}}</a></td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl3" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl3}}</a></td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl4" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl4}}</a></td>
 														@if($i==3 or $i==7)
 														<tr>
 															
@@ -78,10 +82,10 @@
 													@foreach(dataJadwal('selasa') as $jadwal)
 													<tr>
 														<td>{{$i++}}</td>
-														<td>{{$jadwal->rpl1}}</td>
-														<td>{{$jadwal->rpl2}}</td>
-														<td>{{$jadwal->rpl3}}</td>
-														<td>{{$jadwal->rpl4}}</td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl1" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl1}}</a></td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl2" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl2}}</a></td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl3" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl3}}</a></td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl4" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl4}}</a></td>
 														@if($i==3 or $i==7)
 														<tr>
 															
@@ -116,10 +120,10 @@
 													@foreach(dataJadwal('rabu') as $jadwal)
 													<tr>
 														<td>{{$i++}}</td>
-														<td>{{$jadwal->rpl1}}</td>
-														<td>{{$jadwal->rpl2}}</td>
-														<td>{{$jadwal->rpl3}}</td>
-														<td>{{$jadwal->rpl4}}</td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl1" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl1}}</a></td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl2" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl2}}</a></td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl3" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl3}}</a></td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl4" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl4}}</a></td>
 														@if($i==3 or $i==7)
 														<tr>
 															<td colspan="5" style="text-align: center">Istirahat</td>
@@ -155,10 +159,10 @@
 													@foreach(dataJadwal('kamis') as $jadwal)
 													<tr>
 														<td>{{$i++}}</td>
-														<td>{{$jadwal->rpl1}}</td>
-														<td>{{$jadwal->rpl2}}</td>
-														<td>{{$jadwal->rpl3}}</td>
-														<td>{{$jadwal->rpl4}}</td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl1" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl1}}</a></td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl2" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl2}}</a></td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl3" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl3}}</a></td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl4" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl4}}</a></td>
 														@if($i==3 or $i==7)
 														<tr>															
 															<td colspan="5" style="text-align: center">Istirahat</td>
@@ -192,10 +196,10 @@
 													@foreach(dataJadwal('jumat') as $jadwal)
 													<tr>
 														<td>{{$i++}}</td>
-														<td>{{$jadwal->rpl1}}</td>
-														<td>{{$jadwal->rpl2}}</td>
-														<td>{{$jadwal->rpl3}}</td>
-														<td>{{$jadwal->rpl4}}</td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl1" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl1}}</a></td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl2" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl2}}</a></td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl3" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl3}}</a></td>
+														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl4" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl4}}</a></td>
 														@if($i==3 or $i==7)
 														<tr>															
 															<td colspan="5" style="text-align: center">Istirahat</td>
@@ -296,6 +300,7 @@
 @stop
 
 @section('footer')
+<script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 <script>
 	$('.delete').click(function(){
 		var siswa_id = $(this).attr('siswa-id');
@@ -313,6 +318,17 @@
 		  }
 		});
 	});
+
+	$(document).ready(function() {
+		    $('.jadwal').editable({
+		    	title : 'Mapel',
+		      source: [
+		      	<?php foreach (dataMapel() as $mp): ?>
+	              {value: <?php echo $mp->id;;?> , text: "<?php echo $mp->kode;?>"},
+		      	<?php endforeach; ?>
+	           ]
+		    });
+		});
 </script>
 
 @endsection
