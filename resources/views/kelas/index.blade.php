@@ -12,8 +12,6 @@
 									<h1 class="panel-title">Kelas</h1>
 									<div class="right">
 											<a href="/siswa" class="btn btn-primary btn-sm">Lihat Semua Siswa</a>
-											<a href="/guru/exportexcel" class="btn btn-success btn-sm">Export Excel</a>
-											<a href="/guru/exportpdf" class="btn btn-success btn-sm">Export PDF</a>
 									</div>
 								</div>
 								<div class="panel-body">

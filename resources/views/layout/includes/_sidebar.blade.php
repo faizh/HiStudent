@@ -26,14 +26,19 @@
 							@else
 								<li><a href="/mapel" class=""><i class="lnr lnr-book"></i> <span>Mata Pelajaran</span></a></li>
 							@endif
-
+						@endif
 							@if($active=="jadwal")
 								<li><a href="/jadwal" class="active"><i class="lnr lnr-calendar-full"></i> <span>Jadwal Pelajaran</span></a></li>
 							@else
 								<li><a href="/jadwal" class=""><i class="lnr lnr-calendar-full"></i> <span>Jadwal Pelajaran</span></a></li>
 							@endif
-						
+
+						@if($active=="profile")
+							<li><a href="/dashboard/{{auth()->user()->id}}/profile" class="active"><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
+						@else
+							<li><a href="/dashboard/{{auth()->user()->id}}/profile" class=""><i class="lnr lnr-user"></i> <span>My Profile</span></a></li>
 						@endif
+
 					</ul>
 				</nav>
 			</div>

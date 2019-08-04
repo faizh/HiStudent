@@ -10,7 +10,7 @@ class JadwalController extends Controller
     public function index()
     {
     	// dd(dataJadwal('selasa'));
-    	return view('jadwal.index',['link'=>'Jadwal','active'=>'jadwal']);
+    	return view('jadwal.index',['link'=>'HiStudent | Jadwal Pelajaran','active'=>'jadwal']);
     }
 
     public function create(Request $request)

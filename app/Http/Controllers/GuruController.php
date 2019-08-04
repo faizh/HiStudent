@@ -31,7 +31,7 @@ class GuruController extends Controller
     {
     	// dd($mapel);
     	$this->validate($request, [
-    		'nama' => 'required|min:5',
+    		'nama' => 'required|min:3',
     		'email' => 'required|unique:users',
     		'telepon' => 'required',
     		'alamat' => 'required',
@@ -54,6 +54,7 @@ class GuruController extends Controller
     	$guru->telepon=$request->telepon;
     	$guru->alamat=$request->alamat;
     	$guru->mapel_id=$mapel->id;
+        $guru->user_id=$request->user_id;
     	$guru->save();
 
     	if ($request->hasFile('avatar')) {

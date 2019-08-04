@@ -38,6 +38,8 @@
 								</div>
 								<!-- END PROFILE HEADER -->
 								<!-- PROFILE DETAIL -->
+
+								<div class="panel">
 								<div class="profile-detail">
 									<div class="profile-info">
 										<h4 class="heading">Basic Info</h4>
@@ -49,9 +51,44 @@
 											<li>Agama <span>{{$siswa->agama}}</span></li>
 											<li>Alamat <span>{{$siswa->alamat}}</span></li>
 										</ul>
+										@if(auth()->user()->level=="admin")
+										<div class="text-center"><a href="/siswa/{{$siswa->id}}/edit" class="btn btn-primary">Edit Profile</a></div>
+										@endif
+
+										@if(auth()->user()->level=="siswa")
+										<h4 class="heading">Akun Info</h4>
+										<ul class="list-unstyled list-justify">
+											<li>Level <span>{{auth()->user()->level}}</span></li>
+											<li>Username <span>{{auth()->user()->name}}</span></li>
+											<li>Email <span>{{auth()->user()->email}}</span></li>
+										</ul>
+
+										<div class="text-center"><a href="#" id="btn-pass" class="btn btn-primary">Ganti Password</a></div>
+										<form action="/dashboard/{{auth()->user()->id}}/changepass" method="POST" style="display: none;" id="formPassLama">
+											{{csrf_field()}}
+											<input type="password" class="form-control" aria-describedby="nama_depan" placeholder="Password Lama" name="password_lama">
+											<button type="submit" class="btn btn-primary" style="margin-top: 10px" id="submitPass">Submit</button>
+										</form>
+
+										@if(Session::has('changeable'))
+											<h4 class="heading" style="margin-top: 15px">Ganti Password</h4>
+											<form action="/dashboard/{{auth()->user()->id}}/changepass" method="POST">
+												{{csrf_field()}}
+											    <label for="exampleInputEmail1">Password Baru</label>
+											    <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="nama_depan" placeholder="Password Baru" name="password_baru" id="pass_baru">
+
+											    <label for="exampleInputEmail1">Ulangi Password Baru</label>
+											    <input type="password" class="form-control" id="exampleInputEmail1" aria-describedby="nama_depan" placeholder="Ulangi Password Baru" name="ulang_password_baru" id="ulang_pass_baru">
+
+											    <button type="submit" class="btn btn-primary" style="margin-top: 10px" id="submitPass">Submit</button>
+											</form>
+										@endif
+
+										@endif
 									</div>
-									<div class="text-center"><a href="/siswa/{{$siswa->id}}/edit" class="btn btn-primary">Edit Profile</a></div>
-								</div>
+							</div>
+							</div>
+								
 								<!-- END PROFILE DETAIL -->
 							</div>
 							<!-- END LEFT COLUMN -->
@@ -62,9 +99,11 @@
 								<!-- TABBED CONTENT -->
 								<div class="col-md-12">
 									<!-- TABLE STRIPED -->
-									<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">
+								@if(auth()->user()->level=="admin")
+								<button type="button" class="btn btn-primary " data-toggle="modal" data-target="#exampleModal">
 								  Tambah Nilai
 								</button>
+								@endif
 									<div class="panel">
 										<div class="panel-heading">
 											<h3 class="panel-title">Mata Pelajaran</h3>
@@ -77,7 +116,9 @@
 														<th>Nama</th>
 														<th>Semester</th>
 														<th>Nilai</th>
+														@if(auth()->user()->level=="admin" or auth()->user()->level=="user")
 														<th>Aksi</th>
+														@endif
 													</tr>
 												</thead>
 												<tbody>
@@ -86,8 +127,14 @@
 														<td>{{$mapel->kode}}</td>
 														<td>{{$mapel->nama}}</td>
 														<td>{{$mapel->semester}}</td>
-														<td><a href="#" class="nilai" data-type="select" data-pk="{{$mapel->id}}" data-url="/api/siswa/{{$siswa->id}}/editnilai" data-title="Masukan Nilai">{{$mapel->pivot->nilai}}</a></td>
+														@if(auth()->user()->level=="admin" or auth()->user()->level=="user")
+														<td><a href="#" class="nilai" data-type="text" data-pk="{{$mapel->id}}" data-url="/api/siswa/{{$siswa->id}}/editnilai" data-title="Masukan Nilai">{{$mapel->pivot->nilai}}</a></td>
+														@elseif(auth()->user()->level=="siswa")
+														<td>{{$mapel->pivot->nilai}}</td>
+														@endif
+														@if(auth()->user()->level=="admin" or auth()->user()->level=="user")
 														<td><a href="#" class="btn btn-danger btn-sm delete" siswa-id="{{$siswa->id}}" mapel-id="{{$mapel->id}}">Delete</a></td>
+														@endif
 													</tr>
 													@endforeach
 												</tbody>
@@ -112,6 +159,7 @@
 			<!-- END MAIN CONTENT -->
 		</div>
 
+		@if(auth()->user()->level=="admin")
 		<div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			  <div class="modal-dialog" role="document">
 			    <div class="modal-content">
@@ -155,6 +203,7 @@
 			  </div>
 				</div>
 			</div>
+		@endif
 @endsection
 
 @section('footer')
@@ -223,6 +272,18 @@
 		  }
 		});
 	});
+
+	$("#btn-pass").click(function(){
+    $("#formPassLama").toggle();
+    $("#btn-pass").hide();
+    $("")
+	});
+
+	$("#submitPass").click(function(){
+    $("#btn-pass").hide();
+    $("")
+	});	
+
 	</script>
 
 @endsection

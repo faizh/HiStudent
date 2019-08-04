@@ -8,7 +8,7 @@ class Guru extends Model
 {
     protected $table = 'guru';
 
-    protected $fillable = ['nama','telepon','alamat','avatar','mapel_id'];
+    protected $fillable = ['nama','telepon','alamat','avatar','mapel_id','user_id'];
 
     public function mapel()
     {

@@ -57,11 +57,14 @@ Route::group(['middleware'=>['auth','checkLevel:admin']],function(){
 	Route::post('/kelas/{kelas}/update','KelasController@update');
 	Route::get('/kelas/{kelas}/delete','KelasController@delete');
 
-	Route::get('/jadwal','JadwalController@index');
 	Route::post('/jadwal/create','JadwalController@create');
 
 });
 
 Route::group(['middleware'=>['auth','checkLevel:admin,siswa,guru']],function(){
 	Route::get('/dashboard','DashboardController@index');
+	Route::get('/dashboard/{id}/profile','DashboardController@profile');
+	Route::post('/dashboard/{id}/changepass','DashboardController@changePass');
+	Route::get('/jadwal','JadwalController@index');
+
 });

@@ -16,11 +16,13 @@
 									<h3 class="panel-title">Jadwal Pelajaran</h3>
 								</div>
 								<div class="panel-body">
+								@if(auth()->user()->level=="admin")
 								<div class="col-md-12">
-									<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" style="margin-bottom: 15px">
+									<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" style="margin-bottom: 15px">	
 									  Atur Jadwal
 									</button>
 								</div>
+								  @endif
 									<div class="row-md-6">
 										<div class="col-md-4">
 											<table class="table table-bordered table-hover">
@@ -44,10 +46,18 @@
 													@foreach(dataJadwal('Mon') as $jadwal)
 													<tr>
 														<td>{{$i++}}</td>
+														@if(auth()->user()->level=="admin")
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl1" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl1}}</a></td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl2" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl2}}</a></td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl3" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl3}}</a></td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl4" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl4}}</a></td>
+														@endif
+														@if(auth()->user()->level=="siswa" or auth()->user()->level=="guru")
+														<td>{{$jadwal->rpl1}}</td>
+														<td>{{$jadwal->rpl2}}</td>
+														<td>{{$jadwal->rpl3}}</td>
+														<td>{{$jadwal->rpl4}}</td>
+														@endif
 														@if($i==3 or $i==7)
 														<tr>
 															
@@ -82,13 +92,20 @@
 													@foreach(dataJadwal('Tue') as $jadwal)
 													<tr>
 														<td>{{$i++}}</td>
+														@if(auth()->user()->level=="admin")
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl1" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl1}}</a></td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl2" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl2}}</a></td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl3" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl3}}</a></td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl4" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl4}}</a></td>
+														@endif
+														@if(auth()->user()->level=="siswa" or auth()->user()->level=="guru")
+														<td>{{$jadwal->rpl1}}</td>
+														<td>{{$jadwal->rpl2}}</td>
+														<td>{{$jadwal->rpl3}}</td>
+														<td>{{$jadwal->rpl4}}</td>
+														@endif
 														@if($i==3 or $i==7)
 														<tr>
-															
 															<td colspan="5" style="text-align: center">Istirahat</td>
 														</tr>
 														@endif
@@ -120,10 +137,18 @@
 													@foreach(dataJadwal('Wed') as $jadwal)
 													<tr>
 														<td>{{$i++}}</td>
+														@if(auth()->user()->level=="admin")
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl1" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl1}}</a></td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl2" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl2}}</a></td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl3" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl3}}</a></td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl4" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl4}}</a></td>
+														@endif
+														@if(auth()->user()->level=="siswa" or auth()->user()->level=="guru")
+														<td>{{$jadwal->rpl1}}</td>
+														<td>{{$jadwal->rpl2}}</td>
+														<td>{{$jadwal->rpl3}}</td>
+														<td>{{$jadwal->rpl4}}</td>
+														@endif
 														@if($i==3 or $i==7)
 														<tr>
 															<td colspan="5" style="text-align: center">Istirahat</td>
@@ -159,10 +184,18 @@
 													@foreach(dataJadwal('Thu') as $jadwal)
 													<tr>
 														<td>{{$i++}}</td>
+														@if(auth()->user()->level=="admin")
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl1" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl1}}</a></td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl2" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl2}}</a></td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl3" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl3}}</a></td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl4" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl4}}</a></td>
+														@endif
+														@if(auth()->user()->level=="siswa" or auth()->user()->level=="guru")
+														<td>{{$jadwal->rpl1}}</td>
+														<td>{{$jadwal->rpl2}}</td>
+														<td>{{$jadwal->rpl3}}</td>
+														<td>{{$jadwal->rpl4}}</td>
+														@endif
 														@if($i==3 or $i==7)
 														<tr>															
 															<td colspan="5" style="text-align: center">Istirahat</td>
@@ -196,10 +229,18 @@
 													@foreach(dataJadwal('Fri') as $jadwal)
 													<tr>
 														<td>{{$i++}}</td>
+														@if(auth()->user()->level=="admin")
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl1" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl1}}</a></td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl2" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl2}}</a></td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl3" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl3}}</a></td>
 														<td><a href="#" class="jadwal" data-type="select" data-pk="{{$jadwal->id}}" data-url="/api/jadwal/{{$jadwal->id}}/editjadwalrpl4" data-title="Pilih Mata Pelajaran" editable-placeholder="Jadwal">{{$jadwal->rpl4}}</a></td>
+														@endif
+														@if(auth()->user()->level=="siswa" or auth()->user()->level=="guru")
+														<td>{{$jadwal->rpl1}}</td>
+														<td>{{$jadwal->rpl2}}</td>
+														<td>{{$jadwal->rpl3}}</td>
+														<td>{{$jadwal->rpl4}}</td>
+														@endif
 														@if($i==3 or $i==7)
 														<tr>															
 															<td colspan="5" style="text-align: center">Istirahat</td>
