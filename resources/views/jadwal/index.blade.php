@@ -16,13 +16,13 @@
 									<h3 class="panel-title">Jadwal Pelajaran</h3>
 								</div>
 								<div class="panel-body">
-								@if(auth()->user()->level=="admin")
-								<div class="col-md-12">
+								<!-- @if(auth()->user()->level=="admin") -->
+								<!-- <div class="col-md-12">
 									<button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#exampleModal" style="margin-bottom: 15px">	
 									  Atur Jadwal
 									</button>
-								</div>
-								  @endif
+								</div> -->
+								  <!-- @endif -->
 									<div class="row-md-6">
 										<div class="col-md-4">
 											<table class="table table-bordered table-hover">
