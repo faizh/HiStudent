@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use Intervention\Image\ImageManagerStatic as Image;
 use Illuminate\Http\Request;
 use App\Exports\SiswaExport;
 use Maatwebsite\Excel\Facades\Excel;
 use App\Siswa;
 use PDF;
+use Intervention\Image\ImageManagerStatic as Image;
 
 
 class SiswaController extends Controller
@@ -48,14 +48,14 @@ class SiswaController extends Controller
         $siswa = Siswa::create($request->all());
 
         if($request->hasFile('avatar')){
-            $request->file('avatar')->move('images/',$request->file('avatar')->getClientOriginalName());
-            // $image=$request->file('avatar');
-            // $filename=$image->getClientOriginalName();
-            // $path = public_path('images/'.$filename);
-            // Image::make($image->getRealPath())->resize(100,100)->save($path);
-            // $siswa->avatar=$filename;
             $siswa->avatar = $request->file('avatar')->getClientOriginalName();
             $siswa->save();
+
+            $image = $request->file('avatar');
+            $filename= $image->getClientOriginalName();
+            $image_resize = Image::make($image->getRealPath());              
+            $image_resize->resize(120,120);
+            $image_resize->save(public_path('images/'.$filename));
         }
 
     	return redirect('/siswa')->with('sukses','Data Disimpan');
@@ -79,14 +79,19 @@ class SiswaController extends Controller
 
     	$siswa->update($request->all());
         if($request->hasFile('avatar')){
-            $request->file('avatar')->move('images/',$request->file('avatar')->getClientOriginalName());
+            $siswa->avatar = $request->file('avatar')->getClientOriginalName();
+            $siswa->save();
+
+            $image = $request->file('avatar');
+            $filename= $image->getClientOriginalName();
+            $image_resize = Image::make($image->getRealPath());              
+            $image_resize->resize(120,120);
+            $image_resize->save(public_path('images/'.$filename));
             // $image=$request->file('avatar');
             // $filename=$image->getClientOriginalName();
             // $path = public_path('images/'.$filename);
             // Image::make($image->getRealPath())->resize(100,100)->save($path);
             // $siswa->avatar=$filename;
-            $siswa->avatar = $request->file('avatar')->getClientOriginalName();
-            $siswa->save();
         }
 		return redirect('/siswa')->with('sukses','Data Berhasil Diupdate');
     }

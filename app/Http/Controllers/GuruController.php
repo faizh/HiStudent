@@ -7,6 +7,7 @@ use App\Exports\GuruExport;
 use Maatwebsite\Excel\Facades\Excel;
 use PDF;
 use App\Guru;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class GuruController extends Controller
 {
@@ -58,9 +59,14 @@ class GuruController extends Controller
     	$guru->save();
 
     	if ($request->hasFile('avatar')) {
-    		$request->file('avatar')->move('images/',$request->file('avatar')->getClientOriginalName());
     		$guru->avatar = $request->file('avatar')->getClientOriginalName();
-    		$guru->save();
+            $guru->save();
+
+            $image = $request->file('avatar');
+            $filename= $image->getClientOriginalName();
+            $image_resize = Image::make($image->getRealPath());              
+            $image_resize->resize(120,120);
+            $image_resize->save(public_path('images/'.$filename));
     		# code...
     	}
 
@@ -85,10 +91,14 @@ class GuruController extends Controller
     	$guru->update($request->all());
 
     	if ($request->hasFile('avatar')) {
-    		$request->file('avatar')->move('images/',$request->file('avatar')->getClientOriginalName());
     		$guru->avatar = $request->file('avatar')->getClientOriginalName();
-    		$guru->save();
-    		# code...
+            $guru->save();
+
+            $image = $request->file('avatar');
+            $filename= $image->getClientOriginalName();
+            $image_resize = Image::make($image->getRealPath());              
+            $image_resize->resize(120,120);
+            $image_resize->save(public_path('images/'.$filename));
     	}
 
     	return redirect('/guru')->with('sukses','Data Berhasil Di Edit');
