@@ -21,6 +21,7 @@
 
   <!-- Custom CSS -->
   <link href="home/css/stylish-portfolio.min.css" rel="stylesheet">
+  <link rel="icon" type="image/png" sizes="96x96" href="images/tab-logo.png">
 
 </head>
 

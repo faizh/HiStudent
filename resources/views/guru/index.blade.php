@@ -90,7 +90,7 @@
 
 					  <div class="form-group {{$errors->has('nama') ? 'has-error' : ''}}">
 					    <label for="exampleInputEmail1">Nama Lengkap</label>
-					    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="nama_depan" placeholder="Nama Lengkap" name="nama" value="{{old('nama_depan')}}">
+					    <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="nama_depan" placeholder="Nama Lengkap" name="nama" value="{{old('nama')}}">
 					    @if($errors->has('nama_depan'))
 					    	<span class="help-block">{{$errors->first('nama')}}</span>
 					    @endif
@@ -113,9 +113,12 @@
 					    @endif
 					  </div>
 
-					  <div class="form-group">
+					  <div class="form-group {{$errors->has('telepon') ? 'has-error' : ''}}">
 					    <label for="alamat">Alamat</label>
 					    <textarea class="form-control" id="alamat" rows="3" name="alamat">{{old('alamat')}}</textarea>
+					     @if($errors->has('telepon'))
+					    	<span class="help-block">{{$errors->first('telepon')}}</span>
+					    @endif
 					  </div>
 
 					  	<div class="form-group {{$errors->has('avatar') ? 'has-error' : ''}}" >

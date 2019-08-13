@@ -25,7 +25,7 @@ class MapelController extends Controller
     		'semester' => 'required'
     	]);
     	Mapel::create($request->all());
-    	return redirect('/mapel');
+    	return redirect('/mapel')->with('sukses','Mata Pelajaran Berhasil Ditambah');
     }
 
     public function edit(Mapel $mapel)
@@ -44,9 +44,10 @@ class MapelController extends Controller
     	return redirect('/mapel');
     }
 
-    public function delete(Siswa $Siswa)
+    public function delete(Mapel $mapel)
     {
-    	$siswa->delete();
+    	$mapel->delete();
+        return redirect('/mapel');
     }
 
     public function profile(Mapel $mapel)

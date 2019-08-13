@@ -146,6 +146,6 @@ class SiswaController extends Controller
     public function kelas($id)
     {
         $data_siswa=Siswa::where('kelas_id','LIKE','%'.$id.'%')->get();
-        return view('siswa.index',['data_siswa'=>$data_siswa,'link'=>'HiStudent | Siswa','active'=>'siswa','kelas'=>dataKelas(),'id'=>$id]);
+        return view('siswa.index',['data_siswa'=>$data_siswa,'link'=>'HiStudent | Siswa','active'=>'siswa','kelas'=>dataKelas(),'lookAll'=>'true','id'=>$id]);
     }
 }

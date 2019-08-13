@@ -11,6 +11,9 @@
 								<div class="panel-heading">
 									<h1 class="panel-title">Data Siswa</h1>
 									<div class="right">
+										@if(Session::has('lookAll'))
+											<a href="/siswa" class="btn btn-primary btn-sm">Lihat Semua Siswa</a>
+										@endif
 											<a href="/siswa/exportexcel" class="btn btn-success btn-sm">Export Excel</a>
 											<a href="/siswa/exportpdf" class="btn btn-success btn-sm">Export PDF</a>
 									</div>
