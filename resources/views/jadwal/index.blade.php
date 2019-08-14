@@ -14,6 +14,7 @@
 							<div class="panel">
 								<div class="panel-heading">
 									<h3 class="panel-title">Jadwal Pelajaran</h3>
+
 								</div>
 								<div class="panel-body">
 								<!-- @if(auth()->user()->level=="admin") -->
@@ -338,9 +339,17 @@
 			  </div>
 				</div>
 			</div>
+
+
 @stop
 
 @section('footer')
+<script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
+<script>
+	@if($cek=='true')
+		toastr.error("{{$message}}", "Error");
+	@endif
+</script>
 <script src="//cdnjs.cloudflare.com/ajax/libs/x-editable/1.5.0/bootstrap3-editable/js/bootstrap-editable.min.js"></script>
 <script>
 	$('.delete').click(function(){
